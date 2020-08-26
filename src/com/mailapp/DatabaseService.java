@@ -28,7 +28,7 @@ public class DatabaseService{
             mailList.add(mail);
             database.addMailToDatabase(mail.getPassword(), mail.getCompanyName(), mail.getDepartment(), mail.getFirstName(), mail.getLastName());
             System.out.print("Do you want to quit? (Y/N): ");
-            operator = sc.next();
+            operator = sc.nextLine();
         }
     }
 
@@ -43,5 +43,6 @@ public class DatabaseService{
         this.company = sc.nextLine();
         System.out.print("Password length: ");
         this.passwordLength = sc.nextInt();
+        sc.nextLine();
     }
 }
