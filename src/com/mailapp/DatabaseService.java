@@ -28,12 +28,12 @@ public class DatabaseService{
             mailList.add(mail);
             database.addMailToDatabase(mail.getPassword(), mail.getCompanyName(), mail.getDepartment(), mail.getFirstName(), mail.getLastName());
             System.out.print("Do you want to quit? (Y/N): ");
-            operator = sc.nextLine();
+            operator = sc.next();
         }
     }
 
     private void userInput(){
-        System.out.print("\nFirst Name: ");
+        System.out.print("First Name: ");
         this.firstName = sc.nextLine();
         System.out.print("Last Name: ");
         this.lastName = sc.nextLine();
