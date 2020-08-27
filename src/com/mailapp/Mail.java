@@ -1,24 +1,17 @@
 package com.mailapp;
 
+import java.util.Scanner;
+
 public class Mail {
+
+    private String password;
     private String firstName;
     private String lastName;
     private String department;
-    private String password;
     private String companyName;
     private int passwordLength;
 
-    public Mail(String firstName, String lastName, String department, String companyName, int passwordLength){
-        this.firstName = firstName.toLowerCase();
-        this.lastName = lastName.toLowerCase();
-        this.department = department.toLowerCase();
-        this.passwordLength = passwordLength;
-        this.companyName = companyName.toLowerCase();
-        generatePassword();
-        generateMail();
-    }
-
-    private void generatePassword(){
+    public void generatePassword(){
         String passwordChar = "ABCDEFGHIJKLMNOPRSTWUVXYZ123456789%*#!?abcdefghijklmnoprstwuvxyz";
         String newPassword = "";
         while (newPassword.length() < passwordLength){
@@ -28,7 +21,22 @@ public class Mail {
         this.password = newPassword;
     }
 
-    private String generateMail(){
+    public void userInput(){
+        Scanner sc = new Scanner(System.in);
+        System.out.print("First Name: ");
+        this.firstName = sc.nextLine();
+        System.out.print("Last Name: ");
+        this.lastName = sc.nextLine();
+        System.out.print("Department: ");
+        this.department = sc.nextLine();
+        System.out.print("Company: ");
+        this.companyName = sc.nextLine();
+        System.out.print("Password length: ");
+        this.passwordLength = sc.nextInt();
+        sc.nextLine();
+    }
+
+    public String getGeneratedMail(){
         return firstName + "." + lastName + "@" + department + "." + companyName + ".com";
     }
 

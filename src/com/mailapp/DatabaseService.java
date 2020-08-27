@@ -1,19 +1,10 @@
 package com.mailapp;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
-public class DatabaseService{
+public class DatabaseService extends Mail{
     MailDatabase database = new MailDatabase();
-    List<Mail> mailList = new ArrayList<>();
     Scanner sc = new Scanner(System.in);
-
-    String firstName;
-    String lastName;
-    String department;
-    String company;
-    int passwordLength;
 
     public DatabaseService(){
         databaseProgram();
@@ -21,28 +12,38 @@ public class DatabaseService{
     }
 
     private void databaseProgram(){
+        int databaseRemover;
+        String programOperator = "";
         String operator = "";
+        int index = 0;
         while(!operator.equals("Y")){
-            userInput();
-            var mail = new Mail(firstName, lastName, department, company, passwordLength);
-            mailList.add(mail);
-            database.addMailToDatabase(mail.getPassword(), mail.getCompanyName(), mail.getDepartment(), mail.getFirstName(), mail.getLastName());
+            System.out.print("Do you want to show Database? (Y/N): ");
+            programOperator = sc.nextLine();
+            if(programOperator.equals("Y"))
+                database.showDatabase();
+            System.out.print("Do you want to remove from Database? (Y/N): ");
+            programOperator = sc.nextLine();
+            if(programOperator.equals("Y")) {
+                System.out.print("Choose an index to remove: ");
+                databaseRemover = sc.nextInt();
+                sc.nextLine();
+                database.removeMailFromDatabase(databaseRemover);
+            }
+            var mail = new Mail();
+            mail.userInput();
+            mail.generatePassword();
+            database.addMailToDatabase(
+                    index,
+                    mail.getPassword(),
+                    mail.getCompanyName(),
+                    mail.getDepartment(),
+                    mail.getFirstName(),
+                    mail.getLastName(),
+                    mail.getGeneratedMail());
+            ++index;
             System.out.print("Do you want to quit? (Y/N): ");
             operator = sc.nextLine();
         }
     }
 
-    private void userInput(){
-        System.out.print("First Name: ");
-        this.firstName = sc.nextLine();
-        System.out.print("Last Name: ");
-        this.lastName = sc.nextLine();
-        System.out.print("Department: ");
-        this.department = sc.nextLine();
-        System.out.print("Company: ");
-        this.company = sc.nextLine();
-        System.out.print("Password length: ");
-        this.passwordLength = sc.nextInt();
-        sc.nextLine();
-    }
 }
