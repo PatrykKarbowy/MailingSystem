@@ -13,7 +13,7 @@ public class DatabaseService extends Mail{
 
     private void databaseProgram(){
         int databaseRemover;
-        String programOperator = "";
+        String programOperator;
         String operator = "";
         int index = 0;
         while(!operator.equals("Y")){
