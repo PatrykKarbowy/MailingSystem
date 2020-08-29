@@ -21,19 +21,24 @@ public class Mail {
         this.password = newPassword;
     }
 
-    public void userInput(){
+    public void userInput() {
         Scanner sc = new Scanner(System.in);
-        System.out.print("First Name: ");
-        this.firstName = sc.nextLine();
-        System.out.print("Last Name: ");
-        this.lastName = sc.nextLine();
-        System.out.print("Department: ");
-        this.department = sc.nextLine();
-        System.out.print("Company: ");
-        this.companyName = sc.nextLine();
-        System.out.print("Password length: ");
-        this.passwordLength = sc.nextInt();
-        sc.nextLine();
+            try {
+                System.out.print("First Name: ");
+                this.firstName = sc.nextLine();
+                System.out.print("Last Name: ");
+                this.lastName = sc.nextLine();
+                System.out.print("Department: ");
+                this.department = sc.nextLine();
+                System.out.print("Company: ");
+                this.companyName = sc.nextLine();
+                System.out.print("Password length: ");
+                this.passwordLength = sc.nextInt();
+                sc.nextLine();
+            } catch (java.util.InputMismatchException e) {
+                System.out.println("Invalid input format!");
+                sc.nextLine();
+            }
     }
 
     public String getGeneratedMail(){

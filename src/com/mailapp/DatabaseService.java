@@ -21,6 +21,17 @@ public class DatabaseService extends Mail{
             programOperator = sc.nextLine();
             if(programOperator.equals("Y"))
                 database.showDatabase();
+            System.out.print("Do you want to change someone's password? (Y/N): ");
+            programOperator = sc.nextLine();
+            if(programOperator.equals("Y")) {
+                System.out.println("Write and index of the user: ");
+                int indexOfUser = sc.nextInt();
+                sc.nextLine();
+                System.out.println("Write new password: ");
+                String userNewPassword = sc.nextLine();
+                database.setNewPassword(indexOfUser, userNewPassword);
+                System.out.println("New password is set to: " + userNewPassword);
+            }
             System.out.print("Do you want to remove from Database? (Y/N): ");
             programOperator = sc.nextLine();
             if(programOperator.equals("Y")) {

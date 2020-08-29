@@ -21,7 +21,6 @@ public class MailDatabase{
         setFirstNames(firstName);
         setLastNames(lastName);
         setMails(mail);
-        System.out.println("\nMail added to database!\n");
     }
 
     public void removeMailFromDatabase(int index){
@@ -34,6 +33,10 @@ public class MailDatabase{
         indexes.remove(index);
         System.out.println("\nID " + index + " is removed from Database!\n");
 
+    }
+
+    public void setNewPassword(int index, String password){
+        this.passwords.set(index, password);
     }
 
     public void setPasswords(String password){
